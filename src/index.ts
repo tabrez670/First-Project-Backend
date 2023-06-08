@@ -4,17 +4,10 @@ import http from "http";
 import config from "./config/config.js";
 import Logging from "./library/logging.js";
 import authRouter from  "./routes/user.routes.js";
-import videoRouter from "./routes/video.routes.js";
-import commentRouter from "./routes/comment.routes.js";
+import videoRouter from "./routes/shops.routes.js";
 import decodeAuthToken from "./middleware/decodeAuthToken.js";
-import aws from "aws-sdk";
 
-aws.config.update({
-    // setting my aws credentials
-    accessKeyId: config.aws.AWS_ACCESS_KEY_ID,
-    secretAccessKey: config.aws.AWS_SECRET_ACCESS_KEY,
-    region: config.aws.AWS_REGION,
-});
+
 
 const router: Express = express();
 const allowedOrigins = ["*"];
@@ -61,8 +54,6 @@ const initServer = (router: Express) => {
     // auth routes : create, login, update, delete user, getOne, getAll
     router.use("/auth", authRouter);
     router.use("/video", videoRouter);
-    router.use("/comment", commentRouter); //FIXME: check to use comment here of inside video middleware.
-
     // example route to check token based access
     router.get(
         "/sample-protected",

@@ -1,13 +1,12 @@
 import { Request, Response, NextFunction } from "express";
-import { IVideo } from "../types/video.type.js";
+import { IShop } from "../types/shops.type.js";
 import commonErrorActions from "../types/error.type.js";
 import Logging from "../library/logging.js";
-import videoCollection from "../models/video.model.js";
+import videoCollection from "../models/shops.model.js";
 import mongoose from "mongoose";
 import { Role } from "../types/user.type.js";
 import config from "../config/config.js";
 import multer from "multer";
-import { awsFileUploader, deleteAFileFromS3 } from "./aws-s3.controller.js";
 
 //  it is storing the file in memory
 const multerUploader = multer({

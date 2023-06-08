@@ -4,7 +4,7 @@ dotenv.config();
 
 const MONGO_USERNAME: string = process.env.MONGO_USERNAME || "";
 const MONGO_PASSWORD: string = process.env.MONGO_PASSWORD || "";
-const MONGO_URL = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@users.wq7vfck.mongodb.net/`;
+const MONGO_URL = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@cluster0.hfieepn.mongodb.net/?retryWrites=true&w=majority`;
 
 const SERVER_PORT: string = process.env.SERVER_PORT || "8000";
 const SERVER_HOSTNAME: string = process.env.SERVER_HOSTNAME || "localhost";

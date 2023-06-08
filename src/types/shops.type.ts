@@ -1,7 +1,7 @@
 import { IComment } from "./comment.type.js";
 // import { IUser } from "./user.type.js";
 import { Document } from "mongoose";
-export interface IVideo {
+export interface IShop {
     _id: string;
     title: string;
     description: string;

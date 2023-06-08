@@ -1,29 +1,22 @@
 import express, { Request, Response, NextFunction } from "express";
-import {
-    getComment,
-    getAllComments,
-    createComment,
-    deleteComment,
-} from "../controller/comment.controller.js";
+
 import {
     getVideo,
     getAllVideos,
     uploadVideo,
     deleteVideo,
     multerUploader,
-} from "../controller/video.controller.js";
+} from "../controller/shops.controller.js";
 import decodeAuthToken from "../middleware/decodeAuthToken.js";
-import {awsFileUploader} from "../controller/aws-s3.controller.js";
 const videoRoutes = express.Router();
 
 // Private routes
 videoRoutes.get("/all-videos", decodeAuthToken, getAllVideos);
-videoRoutes.get("/video/:id", decodeAuthToken, getVideo, getAllComments);
+videoRoutes.get("/video/:id", decodeAuthToken, getVideo);
 videoRoutes.post(
     "/upload-video",
     decodeAuthToken,
     multerUploader.single("video"),
-    awsFileUploader,
     uploadVideo
 );
 videoRoutes.delete("/video/:id", decodeAuthToken, deleteVideo);
